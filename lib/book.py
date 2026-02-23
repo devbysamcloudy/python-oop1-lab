@@ -1,19 +1,29 @@
-class Book:
-    def __init__(self, title, page_count):
-        self.title = title
-        self._page_count = None
-        self.page_count = page_count   
+#!/usr/bin/env python3
+
+class Coffee:
+    def __init__(self, size, price):
+        self.size = size
+        self.price = price
+        self.status = "hot"
 
     @property
-    def page_count(self):
-        return self._page_count
+    def size(self):
+        return self._size
 
-    @page_count.setter
-    def page_count(self, value):
-        if isinstance(value, int):
-            self._page_count = value
+    @size.setter
+    def size(self, value):
+        if value in ["Small", "Medium", "Large"]:
+            self._size = value
         else:
-            print("page_count must be an integer")
+            print("size must be Small, Medium, or Large")
 
-    def turn_page(self):
-        print("Flipping the page...wow, you read fast!")
+    def sip(self):
+        print(f"You take a sip of the {self.size} coffee.")
+
+    def finish(self):
+        self.status = "finished"
+        print(f"You finished your {self.size} coffee.")
+
+    def tip(self):
+        self.price += 1
+        print("This coffee is great, here’s a tip!")
