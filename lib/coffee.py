@@ -1,10 +1,10 @@
-class Coffee:
-    VALID_SIZES = ["Small", "Medium", "Large"]
+#!/usr/bin/env python3
 
+class Coffee:
     def __init__(self, size, price):
-        self._size = None
-        self.size = size   # validation
+        self.size = size
         self.price = price
+        self.status = "hot"
 
     @property
     def size(self):
@@ -12,11 +12,18 @@ class Coffee:
 
     @size.setter
     def size(self, value):
-        if value in Coffee.VALID_SIZES:
+        if value in ["Small", "Medium", "Large"]:
             self._size = value
         else:
             print("size must be Small, Medium, or Large")
 
+    def sip(self):
+        print(f"You take a sip of the {self.size} coffee.")
+
+    def finish(self):
+        self.status = "finished"
+        print(f"You finished your {self.size} coffee.")
+
     def tip(self):
-        print("This coffee is great, here’s a tip!")
         self.price += 1
+        print("This coffee is great, here’s a tip!")
